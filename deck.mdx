@@ -1,186 +1,111 @@
-import { Head } from "mdx-deck";
-import Code from 'mdx-code';
+import { Head, Image } from "mdx-deck";
+import Code from "mdx-code";
 
-import myTheme from './theme'
+import myTheme from "./theme";
 
-import GraphQuery from './components/GraphQuery'
-import Counter from './components/Counter'
+import Layout from "./components/Layout";
+import GraphQuery from "./components/GraphQuery";
+import DayCounter from "./components/DayCounter";
 
-export const theme = myTheme
+export const theme = myTheme;
 
-<Head><title>Defi Surfing w/ Superfluid</title></Head>
+<Head>
+  <title>Treasure Chess RedwoodJS</title>
+</Head>
 
-# Defi Surfing w/ Superfluid 🏄🏻
+# Treasure Chess 💕 RedwoodJS
 
-Ride the Superfluid Wave 
-
-```js
-alice.flow(bob.address, 10000000)
-```
-
----
-
-# JS-SDK Setup
-
-📖 Docs [here](https://docs.superfluid.finance/superfluid/protocol-tutorials/frontend-+-nodejs)
-
-```bash
-yarn add @superfluid-finance/js-sdk \
-@ethersproject/contracts @ethersproject/providers
-```
+Patrick Gallagher &
+Joseph Schiarizzi
 
 ```js
-const SuperfluidSDK = require("@superfluid-finance/js-sdk");
-const { Web3Provider } = require("@ethersproject/providers");
-
-const sf = new SuperfluidSDK.Framework({
-    ethers: new Web3Provider(window.ethereum)
-});
-await sf.initialize()
+yarn rw g love
 ```
 
---- 
+<Footer>
 
-# Open & Close Streams
+</Footer>
 
-- 🧾 Token [list](https://docs.superfluid.finance/superfluid/networks/networks)
-- Update by changing flowRate
+---
+
+# Where it all started
+
+<DayCounter />
+
+- 3 days for V1, cabin in the woods
+- https://github.com/pi0neerpat/nifty-chess-app
 
 ```js
-const carol = sf.user({
-    address: walletAddress,
-    token: '0xF2d68898557cCb2Cf4C10c3Ef2B034b2a69DAD00'
-});
-
-await carol.flow({
-    recipient: '0xA8f3447922d786045CB582B0C825723B744a54df',
-    // 1000 tokens per month, for a token with 18 decimals
-    flowRate: '385802469135802'
-});
-```
-
---- 
-
-# 🧮 Flow Rate Calculation
-
-
-<Code>
-
-```js 
-const oneMinute = 60;
-const oneHour = 60 * oneMinute;
-const oneDay = 24 * oneHour;
-const oneMonth = 30 * oneDay;
-
-const onePerHour = 1e18 / oneHour;
-const onePerMonth = 1e18 / oneMonth;
-
-console.log(`1 token per hour: ${onePerHour.toFixed(0)} tokens (wei) / second`);
-console.log(`1 token per month: ${onePerMonth.toFixed(0)} tokens (wei) / second`);
-```
-
-</Code>
-
-
-- Pay attention to units! See [Solidity docs](https://docs.soliditylang.org/en/v0.8.5/units-and-global-variables.html?highlight=wei#ether-units)
----
-
-# 📡 Fetch Data
-
-- Accounts, flows, token events, transactions
-- [Playground](https://thegraph.com/explorer/subgraph/superfluid-finance/superfluid-xdai) from The Graph
-- 📖 Docs + learning resources [here](https://docs.superfluid.finance/superfluid/docs/subgraph)
-
-```js
-const query = `{
-    account(id: "0x000deb0c92e6d3da7f77ed01b8473b3f7f4efc39") {
-        flowsOwned {
-            flowRate
-            sum
-            lastUpdate
-            token { 
-                id
-                symbol
-            }
-        }
-    }
-  }
-`
-const result = await axios.post(QUERY_URL, { query })
+const isWinner = await ethDenver.hack();
 ```
 
 ---
 
-# 📡 Fetch Data - Example  
-
-<GraphQuery/>
-
-- See the React component above in `/components/GraphQuery.js`
-
----
-
-# Calculating Totals
-
-<Code>
-
-```js
-const now = new Date() 
-const THREE_HOURS_AGO = new Date(now - 3 * 3600); 
-const lastUpdate = THREE_HOURS_AGO
-const sum = 0
-const flowRate = 0.00027778 // 1 per hour
-
-const totalFlowed = sum + flowRate * (now - lastUpdate)
-
-console.log(`Total flowed: ${totalFlowed} tokens`)
-```
-
-</Code>
-
-- Use a Big Number library like `bn.js` or `@ethersproject/units`
+<iframe
+  style={{
+    width: "75%",
+    height: "100%",
+    backgroundColor: "#47433f",
+    border: "none",
+  }}
+  src="https://treasure.chess.com/treasures/2"
+/>
 
 ---
 
-# Streams are ALIVE! 🧟
+<Layout color="red">
 
-```js
-const interestEarnedIn2Seconds = rate * 2
-React.useEffect(() => {
-    const timer = setTimeout(() => {
-        setCount(count + interestEarnedIn2Seconds);
-    }, 2000);
-    return () => clearTimeout(timer);
-});
-```
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  }}
+>
+  <img
+    style={{
+      width: "200px",
+      height: "100%",
+    }}
+    src="https://d33wubrfki0l68.cloudfront.net/492ed629970792d32ac857da0166a7d2308bad99/428b6/images/diecut.svg"
+  />
+  <h1>Our Redwood Stack</h1>
+</div>
 
-<Counter initialValue={1000000} rate={.00027778}/>
+- Web styling - TailwindCSS
+- Prerender - default
+- Router - default
+- Graphql - default
+- Login - "Extended" dBAuth
+- Devops/CI - Github Actions
+- Preview deploy - Vercel
+- Production deploy - Docker GCP Kubernetes
 
-- See the React component above in `/components/Counter.js`
----
-
-# 🌄 Your Adventure Awaits
-
-## Super Tokens 🦸
-
-- **Streams**: Move tokens over time
-- **ERC777**:  Tokens which can "react" to certain events using callbacks. Learn about the standard at https://erc777.org
-- **Batch Call**: Have you ever wanted to execute 100 transactions at the same time? Learn how in the [docs](https://docs.superfluid.finance/superfluid/docs/batch-call).
-
-## Super Apps 🤖
-
-Automated flows, NFTs, games, etc.
-
----
-
-# 🤝 Get Help 
-
-[🛠️ Examples](https://docs.superfluid.finance/superfluid/resources/examples) to get started
-
-Come say hello! http://discord.superfluid.finance
+</Layout>
 
 ---
 
+<Layout color="red">
 
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  }}
+>
+  <p style={{ fontSize: "80px", height: "20px" }}>🧠</p>
+  <h1>Knowledge</h1>
+</div>
 
+- Releases + Versioning
+- Docker containers
+- Encrypted environment variables (also includes CI Actions)
+- State Store & React Context
+- "Extended" dbAuth / OAuth
+- OAuth general-purpose code will be released soon
+- Headless rendering (for screenshots + image generation)
 
+</Layout>
 
+---
