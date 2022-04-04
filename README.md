@@ -7,6 +7,8 @@
 
 Much of the code/tooling we've created along the way has been generalized for any RedwoodJS project, and open sourced- we hope you find these resources useful. Happy hacking!
 
+P.S. We're hiring: https://github.com/treasure-chess/jobs
+
 ### Where it all started
 
 Code for Nifty Chess we wrote in a couple days in February, 2021: https://github.com/pi0neerpat/nifty-chess-app. See it LIVE: https://niftychess.com
