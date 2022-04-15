@@ -1,11 +1,10 @@
-
-
 <h1 align="center"><img width="600" style="border-radius: 12px 0px 0px 12px;" src="https://user-images.githubusercontent.com/35622595/161645096-1c45d1f2-c9ab-4314-86d6-7f31a8b6f771.png"/></h1>
 
+# Howdy! These resource and much more are available at. You should go there instead 👉 https://github.com/pi0neerpat/redwood-devops-example
 
-> 🧑‍💻 Hack this presentation: https://gitpod.io/#/https://github.com/treasurechess-redwood-presentation
+🧑‍💻 Hack this presentation: https://gitpod.io/#/https://github.com/treasurechess-redwood-presentation
 
-Much of the code/tooling we've created along the way has been generalized for any RedwoodJS project, and open sourced- we hope you find these resources useful. Happy hacking!
+Almost all of the code/tooling we've created along the way has been generalized for any RedwoodJS project, and open sourced. We hope you find these resources useful. Happy hacking!
 
 P.S. We're hiring: https://github.com/treasure-chess/jobs
 
@@ -55,3 +54,11 @@ Here are some powerful tools
 - Headless rendering (for screenshots + image generation)
   - LIVE Hackathon example https://github.com/pi0neerpat/dao-preview
   - Fork-able example https://github.com/pi0neerpat/headless-screenshot. See example here (refresh if times out): https://headless-screenshot.vercel.app/api?url=https://grubhub.com
+
+## Author
+
+👤 **Patrick Gallagher**
+
+- Website: https://patrickgallagher.dev
+- Twitter: [@pi0neerpat](https://twitter.com/pi0neerpat)
+- GitHub: [@pi0neerpat](https://github.com/pi0neerpat)
